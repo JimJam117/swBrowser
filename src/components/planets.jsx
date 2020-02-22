@@ -29,13 +29,9 @@ export class planets extends Component {
                 <h1>Planets</h1>
                 {this.state.loading ? "Loading" : null}
                 { this.state.planets.map((planet) => 
-                    <Link to = {`/planets/${planet.name}`} key={planet.name}>
-                        <div>
-                            <h3>Name: {planet.name}</h3>
-                            <p>Terrain: {planet.terrain}</p>
-                            <p>Climate: {planet.climate}</p>
-                        </div>
-                    </Link>
+                    <Link to = {`/planet/${planet.url.replace(/[^0-9]/g,'')}`} key={planet.url.replace(/[^0-9]/g,'')}> 
+                    <h3>{planet.name}</h3>
+                </Link>
                 )}
             </div>
         );

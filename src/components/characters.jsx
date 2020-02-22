@@ -15,7 +15,6 @@ export class characters extends Component {
         fetch("https://swapi.co/api/people")
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({
                     loading : false,
                     characters : data.results
@@ -30,11 +29,8 @@ export class characters extends Component {
                 <h1>Characters</h1>
                 {this.state.loading ? "Loading" : null}
                 { this.state.characters.map((character) => 
-                    <Link to = {`/characters/${character.name}`} key={character.name}>
-                        <div>
-                            <h3>Name: {character.name}</h3>
-                            <p>Age: {character.birth_year}</p>
-                        </div>
+                    <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')}> 
+                        <h3>{character.name}</h3>
                     </Link>
                 )}
             </div>

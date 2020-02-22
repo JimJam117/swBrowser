@@ -6,7 +6,7 @@ export class header extends Component {
     render() {
         return (
             <nav >
-                <h1>SWbrowser</h1>
+                <Link to="/"><h1>SWbrowser</h1></Link>
                 <ul>
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/characters"><li>Characters</li></Link>

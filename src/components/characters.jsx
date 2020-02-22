@@ -28,11 +28,13 @@ export class characters extends Component {
             <div>
                 <h1>Characters</h1>
                 {this.state.loading ? "Loading" : null}
+                <div className="items_container">
                 { this.state.characters.map((character) => 
-                    <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')}> 
+                    <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')} className="item_link"> 
                         <h3>{character.name}</h3>
                     </Link>
                 )}
+                </div>
             </div>
         );
     }

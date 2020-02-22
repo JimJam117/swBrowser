@@ -28,11 +28,13 @@ export class planets extends Component {
             <div>
                 <h1>Planets</h1>
                 {this.state.loading ? "Loading" : null}
+                <div className="items_container">
                 { this.state.planets.map((planet) => 
-                    <Link to = {`/planet/${planet.url.replace(/[^0-9]/g,'')}`} key={planet.url.replace(/[^0-9]/g,'')}> 
+                <Link to = {`/planet/${planet.url.replace(/[^0-9]/g,'')}`} key={planet.url.replace(/[^0-9]/g,'')} className="item_link"> 
                     <h3>{planet.name}</h3>
                 </Link>
                 )}
+                </div>
             </div>
         );
     }

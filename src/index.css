@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav{
+  display: flex;
+  background-color: #111;
+  padding: 1em;
+  color: #fff;
+}
+nav ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+nav ul li{
+  padding: 1em;
+}
+nav a{
+  text-decoration: none;
+  color: #eee;
+}
+
+.item_link{
+  color:
+#111;
+text-decoration: none;
+padding: 1em;
+border: 1px solid
+    black;
+    display: block;
+    min-width: 100px;
+    margin: 1em;
+}
+
+.items_container{
+  display: flex;
+}

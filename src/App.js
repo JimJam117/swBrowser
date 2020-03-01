@@ -13,6 +13,20 @@ import {characterDetail} from './components/details/characterDetail';
 import {planetDetail} from './components/details/planetDetail';
 import {shipDetail} from './components/details/shipDetail';
 
+// functions used for rendering
+function CharacterList() {
+ return(<List  title="Characters" linkName="character" apiRef="people"/>); 
+}
+
+function PlanetList() {
+  return(<List  title="Planets" linkName="planet" apiRef="planets"/>); 
+ }
+
+ function ShipList() {
+  return(<List  title="Ships" linkName="ship" apiRef="starships"/>); 
+ }
+
+// main function
 function App() {
   return (
     <Router>
@@ -20,9 +34,9 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home}/>
-          <Route path="/characters" exact render={() => <List  title="Characters" linkName="character" apiRef="people"/>}/>
-          <Route path="/planets" exact render={() => <List  title="Planets" linkName="planet" apiRef="planets"/>}/>
-          <Route path="/ships" exact render={() => <List  title="Ships" linkName="ship" apiRef="starships"/>}/>
+          <Route path="/characters" component={CharacterList} />
+          <Route path="/planets" exact component={PlanetList}/>
+          <Route path="/ships" exact component={ShipList}/>
 
           <Route path= "/character/:id" component={characterDetail}/>
           <Route path= "/planet/:id" component={planetDetail}/>

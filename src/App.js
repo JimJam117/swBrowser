@@ -5,9 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from './components/header.jsx';
 
 // page imports
-import Characters from './components/characters';
-import Planets from './components/planets';
-import Ships from './components/ships';
+import List from './components/list';
 import Home from './components/home';
 
 // detials pages
@@ -22,9 +20,9 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home}/>
-          <Route path="/characters" exact component={Characters}/>
-          <Route path="/planets" component={Planets}/>
-          <Route path="/ships" component={Ships}/>
+          <Route path="/characters" exact render={() => <List  title="Characters" linkName="character" apiRef="people"/>}/>
+          <Route path="/planets" exact render={() => <List  title="Planets" linkName="planet" apiRef="planets"/>}/>
+          <Route path="/ships" exact render={() => <List  title="Ships" linkName="ship" apiRef="starships"/>}/>
 
           <Route path= "/character/:id" component={characterDetail}/>
           <Route path= "/planet/:id" component={planetDetail}/>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Characters() {
+// needs a title and a ref (for the API)
+function List(props) {
     var controller = new AbortController();
     var signal = controller.signal;
 
@@ -13,13 +14,13 @@ function Characters() {
     }, [])
 
     const [loading, setLoading] = useState(true);
-    const [characters, setCharacters] = useState([]);
+    const [list, setList] = useState([]);
 
     const fetchItems = async () =>  {
-        const fetchedData = await fetch("https://swapi.co/api/people", {signal})
+        const fetchedData = await fetch(`https://swapi.co/api/${props.apiRef}`, {signal})
         .then(async (fetchedData) => {
             const data = await fetchedData.json();
-            setCharacters(data.results);
+            setList(data.results);
             setLoading(false);
         })
         .catch((e) => {
@@ -28,12 +29,12 @@ function Characters() {
     }
 
     return(<div>
-        <h1>Characters</h1>
+        <h1>{props.title}</h1>
         {loading ? "Loading" : null}
         <div className="items_container">
-        { characters.map((character) => 
-            <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')} className="item_link"> 
-                <h3>{character.name}</h3>
+        { list.map((item) => 
+            <Link to = {`/${props.linkName}/${item.url.replace(/[^0-9]/g,'')}`} key={item.url.replace(/[^0-9]/g,'')} className="item_link"> 
+                <h3>{item.name}</h3>
             </Link>
         )}
         </div>
@@ -41,4 +42,4 @@ function Characters() {
 
 }
 
-export default Characters;
+export default List;

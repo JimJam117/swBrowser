@@ -5,10 +5,10 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from './components/header.jsx';
 
 // page imports
-import {characters as Characters} from './components/characters';
-import {planets as Planets} from './components/planets';
-import {ships as Ships} from './components/ships';
-import {home as Home} from './components/home';
+import Characters from './components/characters';
+import Planets from './components/planets';
+import Ships from './components/ships';
+import Home from './components/home';
 
 // detials pages
 import {characterDetail} from './components/details/characterDetail';

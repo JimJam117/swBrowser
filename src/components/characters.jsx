@@ -1,43 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export class characters extends Component {
+function Characters() {
+    var controller = new AbortController();
+    var signal = controller.signal;
 
-    constructor() {
-        super();
-        this.state = {
-            loading : true,
-            characters : []
-        }
+    useEffect(() => {
+        fetchItems()
+        return () => {
+            controller.abort();
+        };
+    }, [])
+
+    const [loading, setLoading] = useState(true);
+    const [characters, setCharacters] = useState([]);
+
+    const fetchItems = async () =>  {
+        const fetchedData = await fetch("https://swapi.co/api/people", {signal})
+        .then(async (fetchedData) => {
+            const data = await fetchedData.json();
+            setCharacters(data.results);
+            setLoading(false);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
-    componentDidMount() {
-        fetch("https://swapi.co/api/people")
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    loading : false,
-                    characters : data.results
-                })
-            })
-    }
+    return(<div>
+        <h1>Characters</h1>
+        {loading ? "Loading" : null}
+        <div className="items_container">
+        { characters.map((character) => 
+            <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')} className="item_link"> 
+                <h3>{character.name}</h3>
+            </Link>
+        )}
+        </div>
+    </div>);
 
-
-    render() {
-         return (
-            <div>
-                <h1>Characters</h1>
-                {this.state.loading ? "Loading" : null}
-                <div className="items_container">
-                { this.state.characters.map((character) => 
-                    <Link to = {`/character/${character.url.replace(/[^0-9]/g,'')}`} key={character.url.replace(/[^0-9]/g,'')} className="item_link"> 
-                        <h3>{character.name}</h3>
-                    </Link>
-                )}
-                </div>
-            </div>
-        );
-    }
 }
 
-export default characters;
+export default Characters;

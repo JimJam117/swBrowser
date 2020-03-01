@@ -11,17 +11,31 @@ export class planetDetail extends Component {
 
     }
 
+    // set up the abort controller
+    controller = new AbortController();
+    signal = this.controller.signal;
+
     componentDidMount() {
         const id = Number(this.props.match.params.id);
-        fetch(`https://swapi.co/api/planets/${id}`)
+        fetch(
+                `https://swapi.co/api/planets/${id}`, 
+                {signal: this.signal} // abort signal
+            )
             .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    loading : false,
-                    planet : data
-                })
-                console.log(id);
-            })
+            .then(
+                data => {
+                    this.setState({
+                        loading : false,
+                        planet : data
+                    })
+                }  
+            )
+            .catch((e) => { console.log(e);}) // catch and log err
+    }
+
+    // abort if unmount
+    componentWillUnmount() {
+        this.controller.abort();
     }
 
     render() {

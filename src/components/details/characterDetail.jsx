@@ -8,25 +8,36 @@ export class characterDetail extends Component {
             loading : true,
             character : {}
         }
-
     }
+    
+    // set up the abort controller
+    controller = new AbortController();
+    signal = this.controller.signal;
 
     componentDidMount() {
         const id = Number(this.props.match.params.id);
-        fetch(`https://swapi.co/api/people/${id}`)
+        fetch(
+                `https://swapi.co/api/people/${id}`, 
+                {signal: this.signal} // abort signal
+            )
             .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    loading : false,
-                    character : data
-                })
-                console.log(id);
-            })
+            .then(
+                data => {
+                    this.setState({
+                        loading : false,
+                        character : data
+                    })
+                }  
+            )
+            .catch((e) => { console.log(e);}) // catch and log err
+    }
+
+    // abort if unmount
+    componentWillUnmount() {
+        this.controller.abort();
     }
 
     render() {
-        
-
         return (
             <div>
                 {this.state.loading ? "Loading" : <div>

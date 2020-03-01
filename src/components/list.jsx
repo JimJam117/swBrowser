@@ -11,7 +11,7 @@ function List(props) {
         return () => {
             controller.abort();
         };
-    }, [])
+    })
 
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState([]);

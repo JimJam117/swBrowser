@@ -39,19 +39,19 @@ export class characterDetail extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.loading ? "Loading" : <div>
-                    <p>Name:        {this.state.character.name}</p>
-                    <p>Height:      {this.state.character.height}</p>
-                    <p>Mass:        {this.state.character.mass}</p>
-                    <p>Hair Color:  {this.state.character.hair_color}</p>
-                    <p>Skin Color:  {this.state.character.skin_color}</p>
-                    <p>Eye Color:   {this.state.character.eye_color}</p>
-                    <p>Birth Year:  {this.state.character.birth_year}</p>
-                    <p>Gender:      {this.state.character.gender}</p>   
+            <main className="details">
+                {this.state.loading ? "Loading" : <section className="details-section">
+                    <h1>Name:                           {this.state.character.name}</h1>
+                    <p><strong>Height:</strong>         {this.state.character.height}cm</p>
+                    <p><strong>Mass:</strong>           {this.state.character.mass}kg</p>
+                    <p><strong>Hair Color:</strong>     {this.state.character.hair_color}</p>
+                    <p><strong>Skin Color:</strong>     {this.state.character.skin_color}</p>
+                    <p><strong>Eye Color:</strong>      {this.state.character.eye_color}</p>
+                    <p><strong>Birth Year:</strong>     {this.state.character.birth_year}</p>
+                    <p><strong>Gender:</strong>         {this.state.character.gender}</p>   
 
-                </div>}    
-            </div>
+                </section>}    
+            </main>
         );
     }
 }

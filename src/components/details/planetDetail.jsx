@@ -42,20 +42,19 @@ export class planetDetail extends Component {
         
 
         return (
-            <div>
-                {this.state.loading ? "Loading" : <div>
-                    <p>Name:        {this.state.planet.name}</p>
+            <main className="details">
+                {this.state.loading ? "Loading" : <section className="details-section">
+                    <h1>Name:                       {this.state.planet.name}</h1>
+                    <p><strong>Terrain:                 </strong>    {this.state.planet.terrain}</p>
+                    <p><strong>Climate:                 </strong>    {this.state.planet.climate}</p>
+                    <p><strong>Day Length:              </strong>    {this.state.planet.rotation_period} Hours</p>
+                    <p><strong>Year Length:             </strong>    {this.state.planet.orbital_period} Days</p>
+                    <p><strong>Gravity Strength:        </strong>    {this.state.planet.gravity}</p>
+                    <p><strong>Surface Water Percentage:</strong>    {this.state.planet.surface_water}</p>
+                    <p><strong>Population:              </strong>    {this.state.planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>                     
 
-                    <p>Terrain:      {this.state.planet.terrain}</p>
-                    <p>Climate:        {this.state.planet.climate}</p>
-                    <p>Day Length:  {this.state.planet.rotation_period} Hours</p>
-                    <p>Year Length:  {this.state.planet.orbital_period} Days</p>
-                    <p>Gravity Strength:   {this.state.planet.gravity}</p>
-                    <p>Surface Water Percentage:  {this.state.planet.surface_water}</p>
-                    <p>Population:      {this.state.planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>                     
-
-                </div>}    
-            </div>
+                </section>}    
+            </main>
         );
     }
 }

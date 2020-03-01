@@ -17,7 +17,7 @@ function List(props) {
     const [list, setList] = useState([]);
 
     const fetchItems = async () =>  {
-        const fetchedData = await fetch(`https://swapi.co/api/${props.apiRef}`, {signal})
+        await fetch(`https://swapi.co/api/${props.apiRef}`, {signal})
         .then(async (fetchedData) => {
             const data = await fetchedData.json();
             setList(data.results);
@@ -28,17 +28,21 @@ function List(props) {
         });
     }
 
-    return(<div>
+    return(<main>
         <h1>{props.title}</h1>
         {loading ? "Loading" : null}
-        <div className="items_container">
-        { list.map((item) => 
-            <Link to = {`/${props.linkName}/${item.url.replace(/[^0-9]/g,'')}`} key={item.url.replace(/[^0-9]/g,'')} className="item_link"> 
-                <h3>{item.name}</h3>
-            </Link>
-        )}
-        </div>
-    </div>);
+        <section className="items_container">
+        <ul>
+            { list.map((item) => 
+                <li key={item.url.replace(/[^0-9]/g,'')} className="item-list-item">
+                    <Link to = {`/${props.linkName}/${item.url.replace(/[^0-9]/g,'')}`} key={item.url.replace(/[^0-9]/g,'')} className="item-link"> 
+                        <h3>{item.name}</h3>
+                    </Link>
+                </li>
+            )}
+        </ul>
+        </section>
+    </main>);
 
 }
 

@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,8 +17,14 @@ code {
     monospace;
 }
 
+.title{
+  line-height: 2;
+}
+
 nav{
   display: flex;
+  align-items: baseline;
+
   background-color: #111;
   padding: 1em;
   color: #fff;
@@ -31,18 +42,53 @@ nav a{
   color: #eee;
 }
 
-.item_link{
-  color:
-#111;
-text-decoration: none;
-padding: 1em;
-border: 1px solid
-    black;
-    display: block;
-    min-width: 100px;
-    margin: 1em;
+.item-list-item{
+  list-style: none;
+  display: inline-block;
+}
+
+.item-link{
+  color:#111;
+  text-decoration: none;
+  padding: 2em 0.5em;
+  border: 1px solid black;
+  display: block;
+  min-width: 300px;
+  margin: 1em;
 }
 
 .items_container{
   display: flex;
+  flex-direction: column;
+}
+
+
+main{
+  padding: 1em;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  padding: 1em;
+}
+
+/* Details */
+.details{
+  text-align: justify;
+}
+.details h1{
+  text-align: justify;
+  padding: 1em 1em 0.5em 0;
+}
+
+@media screen and (max-width: 500px) {
+  nav, nav ul{
+    display: block;
+  }
+  .item-link{
+    min-width: 200px;
+    margin: 1em 0;
+    font-size: 0.8rem;
+  }
 }

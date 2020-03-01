@@ -42,20 +42,20 @@ componentWillUnmount() {
         
 
         return (
-            <div>
-                {this.state.loading ? "Loading" : <div>
-                    <p>Name:                    {this.state.ship.name}</p>
-                    <p>Crew Capacity:                    {this.state.ship.crew}</p>
-                    <p>Passenger Capacity:              {this.state.ship.passengers}</p>
-                    <p>Cost:         {this.state.ship.cost_in_credits} Credits</p>
-                    <p>Length:                  {this.state.ship.length}</p>
-                    <p>Hyperdrive Rating:       {this.state.ship.hyperdrive_rating}</p>
-                    <p>Manufacturer:            {this.state.ship.manufacturer}</p>
-                    <p>Model:                   {this.state.ship.model}</p>
-                    <p>Top Speed in Atmosphere:  {this.state.ship.max_atmosphering_speed}</p>  
+            <main className="details">
+                {this.state.loading ? "Loading" : <section className="details-section">
+                    <h1>Name:                   {this.state.ship.name}</h1>
+                    <p><strong>Crew Capacity:          </strong>     {this.state.ship.crew}</p>
+                    <p><strong>Passenger Capacity:     </strong>     {this.state.ship.passengers}</p>
+                    <p><strong>Cost:                   </strong>     {this.state.ship.cost_in_credits} Credits</p>
+                    <p><strong>Length:                 </strong>     {this.state.ship.length}</p>
+                    <p><strong>Hyperdrive Rating:      </strong>     {this.state.ship.hyperdrive_rating}</p>
+                    <p><strong>Manufacturer:           </strong>     {this.state.ship.manufacturer}</p>
+                    <p><strong>Model:                  </strong>     {this.state.ship.model}</p>
+                    <p><strong>Top Speed in Atmosphere:</strong>     {this.state.ship.max_atmosphering_speed}</p>  
 
-                </div>}    
-            </div>
+                </section>}    
+            </main>
         );
     }
 }

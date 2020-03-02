@@ -78,9 +78,11 @@ function List(props) {
                 )}
             </ul>
 
-            {results.next ? <Link onClick={load} to={`/${props.linkName}s/${id + 1}`}>Next</Link> : null}
-            {results.previous ? <Link onClick={load} to={`/${props.linkName}s/${id - 1}`}>Prev</Link> : null}
-            
+            <div className="pagination">
+            {results.previous ? <Link className="pagination-link" onClick={load} to={`/${props.linkName}s/${id - 1}`}>Prev</Link> : null}
+            {results.next ? <Link className="pagination-link" onClick={load} to={`/${props.linkName}s/${id + 1}`}>Next</Link> : null}
+            </div>
+
             </section>
         }
     </main>);

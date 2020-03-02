@@ -74,7 +74,7 @@ componentWillUnmount() {
 
         return (
             <main className="details">
-                {this.state.loading ? "Loading" : <section className="details-section">
+                {this.state.loading ? <div className="loading">Loading</div> : <section className="details-section">
                     <h1>Name:                   {this.state.ship.name}</h1>
                     <p><strong>Crew Capacity:          </strong>     {this.state.ship.crew}</p>
                     <p><strong>Passenger Capacity:     </strong>     {this.state.ship.passengers}</p>

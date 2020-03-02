@@ -73,7 +73,7 @@ export class characterDetail extends Component {
     render() {
         return (
             <main className="details">
-                {this.state.loading ? "Loading" : <section className="details-section">
+                {this.state.loading ? <div className="loading">Loading</div> : <section className="details-section">
                     <h1>Name:                           {this.state.character.name}</h1>
                     <p><strong>Height:</strong>         {this.state.character.height}cm</p>
                     <p><strong>Mass:</strong>           {this.state.character.mass}kg</p>

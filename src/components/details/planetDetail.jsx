@@ -74,7 +74,7 @@ export class planetDetail extends Component {
 
         return (
             <main className="details">
-                {this.state.loading ? "Loading" : <section className="details-section">
+                {this.state.loading ? <div className="loading">Loading</div> : <section className="details-section">
                     <h1>Name:                       {this.state.planet.name}</h1>
                     <p><strong>Terrain:                 </strong>    {this.state.planet.terrain}</p>
                     <p><strong>Climate:                 </strong>    {this.state.planet.climate}</p>

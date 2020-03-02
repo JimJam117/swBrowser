@@ -99,6 +99,19 @@ h1{
   padding: 1em 1em 0.5em 0;
 }
 
+.loading {
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 500px) {
   nav, nav ul{
     display: block;

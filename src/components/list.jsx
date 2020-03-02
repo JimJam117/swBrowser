@@ -66,7 +66,7 @@ function List(props) {
     return(
     <main>
     <h1>{props.title} | Page {id}</h1>
-        {loading ? "Loading" : 
+        {loading ? <div className="loading">Loading</div> : 
             <section className="items_container">
             <ul>
                 { list.map((item) => 

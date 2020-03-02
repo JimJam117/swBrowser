@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 
 // needs a title and a ref (for the API)
 function List(props) {
+    // page id
+    let { id } = useParams();
+    id = Number(id) ? Number(id) : 1;
+
+    // abort controller
     var controller = new AbortController();
     var signal = controller.signal;
 
     const [loading, setLoading] = useState(true);
-    const [pageNum, setPageNum] = useState(1);
     const [results, setResults] = useState({});
     const [list, setList] = useState([]);
+
+    const load = () => setLoading(true);
+
+
+    console.log(id);
 
     useEffect(() => {
         if (loading) {fetchItems()}
@@ -18,7 +27,7 @@ function List(props) {
         };
     })
 
-    const fetchItems = async (apiUrl = `https://swapi.co/api/${props.apiRef}?page=${pageNum}`) =>  {
+    const fetchItems = async (apiUrl = `https://swapi.co/api/${props.apiRef}?page=${id}`) =>  {
         await fetch(apiUrl, {signal})
         .then(async (fetchedData) => {
             const data = await fetchedData.json();
@@ -31,21 +40,9 @@ function List(props) {
         });
     }
 
-
-    const loadNextPage = () => {
-        setLoading(true);
-        setPageNum(pageNum + 1);
-        //fetchEffect();
-    }
-
-    const loadLastPage = () => {
-        setLoading(true);
-        setPageNum(pageNum - 1);
-        //fetchEffect();
-    }
-
-    return(<main>
-    <h1>{props.title} | Page {pageNum}</h1>
+    return(
+    <main>
+    <h1>{props.title} | Page {id}</h1>
         {loading ? "Loading" : 
             <section className="items_container">
             <ul>
@@ -58,8 +55,8 @@ function List(props) {
                 )}
             </ul>
 
-            {results.next ? <button onClick={loadNextPage}>Next</button> : null}
-            {results.previous ? <button onClick={loadLastPage}>Prev</button> : null}
+            {results.next ? <Link onClick={load} to={`/${props.linkName}s/${id + 1}`}>Next</Link> : null}
+            {results.previous ? <Link onClick={load} to={`/${props.linkName}s/${id - 1}`}>Prev</Link> : null}
             
             </section>
         }

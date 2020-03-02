@@ -15,15 +15,15 @@ import {shipDetail} from './components/details/shipDetail';
 
 // functions used for rendering
 function CharacterList() {
- return(<List  title="Characters" linkName="character" apiRef="people"/>); 
+ return(<List  title="Characters" linkName="character" apiRef="people" pageNumb={1}/>); 
 }
 
 function PlanetList() {
-  return(<List  title="Planets" linkName="planet" apiRef="planets"/>); 
+  return(<List  title="Planets" linkName="planet" apiRef="planets" pageNumb={1}/>); 
  }
 
  function ShipList() {
-  return(<List  title="Ships" linkName="ship" apiRef="starships"/>); 
+  return(<List  title="Ships" linkName="ship" apiRef="starships" pageNumb={1}/>); 
  }
 
 // main function
@@ -34,9 +34,13 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home}/>
-          <Route path="/characters" component={CharacterList} />
-          <Route path="/planets" exact component={PlanetList}/>
-          <Route path="/ships" exact component={ShipList}/>
+          <Route path="/characters" exact component={() => CharacterList()} />
+          <Route path="/planets" exact component={() => PlanetList()}/>
+          <Route path="/ships" exact component={() => ShipList()}/>
+
+          <Route path="/characters/:id" component={CharacterList} />
+          <Route path="/planets/:id"  component={PlanetList}/>
+          <Route path="/ships/:id"  component={ShipList}/>
 
           <Route path= "/character/:id" component={characterDetail}/>
           <Route path= "/planet/:id" component={planetDetail}/>

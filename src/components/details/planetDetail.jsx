@@ -70,11 +70,11 @@ export class planetDetail extends Component {
     }
 
     render() {
-        
-
         return (
-            <main className="details">
-                {this.state.loading ? <div className="loading">Loading</div> : <section className="details-section">
+            
+                this.state.loading ? <div className="loading">Loading</div> : 
+                <main className="details">
+                    <section className="details-section">
                     <h1>Name:                       {this.state.planet.name}</h1>
                     <p><strong>Terrain:                 </strong>    {this.state.planet.terrain}</p>
                     <p><strong>Climate:                 </strong>    {this.state.planet.climate}</p>
@@ -83,11 +83,12 @@ export class planetDetail extends Component {
                     <p><strong>Gravity Strength:        </strong>    {this.state.planet.gravity}</p>
                     <p><strong>Surface Water Percentage:</strong>    {this.state.planet.surface_water}</p>
                     <p><strong>Population:              </strong>    {this.state.planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>                     
-
-                </section>}    
-            </main>
+                    </section>
+                </main>                  
         );
+    
     }
 }
+
 
 export default planetDetail;

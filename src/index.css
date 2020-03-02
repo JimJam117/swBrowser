@@ -100,16 +100,16 @@ h1{
 }
 
 .loading {
-  color: black;
-  font-size: 2rem;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  font-size: 5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 1em;
+}
+
+.loading span{
+  background-color: black;
+  color: wheat;
+  padding: 1em;
 }
 
 @media screen and (max-width: 500px) {

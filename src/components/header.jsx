@@ -8,10 +8,10 @@ export class header extends Component {
             <nav >
                 <Link to="/" className="title"><h1>SWbrowser</h1></Link>
                 <ul>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/characters"><li>Characters</li></Link>
-                    <Link to="/planets"><li>Planets</li></Link>
-                    <Link to="/ships"><li>Ships</li></Link> 
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/characters">Characters</Link></li>
+                    <li><Link to="/planets">Planets</Link></li>
+                    <li><Link to="/ships">Ships</Link></li>
                 </ul>
             </nav> 
         );

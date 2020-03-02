@@ -69,12 +69,12 @@ componentWillUnmount() {
     this.controller.abort();
 }
 
-    render() {
+render() {
+    return (
         
-
-        return (
+            this.state.loading ? <div className="loading">Loading</div> : 
             <main className="details">
-                {this.state.loading ? <div className="loading">Loading</div> : <section className="details-section">
+                <section className="details-section">
                     <h1>Name:                   {this.state.ship.name}</h1>
                     <p><strong>Crew Capacity:          </strong>     {this.state.ship.crew}</p>
                     <p><strong>Passenger Capacity:     </strong>     {this.state.ship.passengers}</p>
@@ -84,11 +84,12 @@ componentWillUnmount() {
                     <p><strong>Manufacturer:           </strong>     {this.state.ship.manufacturer}</p>
                     <p><strong>Model:                  </strong>     {this.state.ship.model}</p>
                     <p><strong>Top Speed in Atmosphere:</strong>     {this.state.ship.max_atmosphering_speed}</p>  
-
-                </section>}    
-            </main>
+                    </section>
+                </main>                  
         );
+    
     }
 }
+
 
 export default shipDetail;

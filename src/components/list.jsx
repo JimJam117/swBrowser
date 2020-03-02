@@ -64,9 +64,10 @@ function List(props) {
     }
 
     return(
-    <main>
-    <h1>{props.title} | Page {id}</h1>
-        {loading ? <div className="loading">Loading</div> : 
+    
+        loading ? <div className="loading">Loading</div> : 
+        <main>
+        <h1>{props.title} | Page {id}</h1>
             <section className="items_container">
             <ul>
                 { list.map((item) => 
@@ -84,8 +85,9 @@ function List(props) {
             </div>
 
             </section>
-        }
-    </main>);
+            </main>
+        
+    );
 
 }
 

@@ -7,6 +7,9 @@ import Header from './components/header.jsx';
 // page imports
 import List from './components/list';
 import Home from './components/home';
+import NotFound from './components/errors/NotFound';
+import PageExpired from './components/errors/PageExpired';
+import ServerError from './components/errors/ServerError';
 
 // detials pages
 import {characterDetail} from './components/details/characterDetail';
@@ -33,7 +36,11 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/" exact component={Home}/>
+
+          <Route path= "/not-found" component={NotFound}/>
+          <Route path= "/page-expired" component={PageExpired}/>
+          <Route path= "/server-error" component={ServerError}/>
+
           <Route path="/characters" exact component={() => CharacterList()} />
           <Route path="/planets" exact component={() => PlanetList()}/>
           <Route path="/ships" exact component={() => ShipList()}/>
@@ -45,6 +52,8 @@ function App() {
           <Route path= "/character/:id" component={characterDetail}/>
           <Route path= "/planet/:id" component={planetDetail}/>
           <Route path= "/ship/:id" component={shipDetail}/>
+
+          <Route path="/" component={Home}/>
 
         </Switch>
         

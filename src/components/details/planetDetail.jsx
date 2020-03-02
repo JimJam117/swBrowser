@@ -21,7 +21,23 @@ export class planetDetail extends Component {
                 `https://swapi.co/api/planets/${id}`, 
                 {signal: this.signal} // abort signal
             )
-            .then(response => response.json())
+
+            // response handling, throw custom errors 
+            .then((response) => {
+                if (response.status === 500) {
+                    throw new Error("500");
+                }
+                else if(response.status === 404) {
+                    throw new Error("404");
+                }
+                else if(response.status === 419) {
+                    throw new Error("419");
+                }
+                 
+                return response.json();
+            })
+
+            // set the state
             .then(
                 data => {
                     this.setState({
@@ -30,7 +46,22 @@ export class planetDetail extends Component {
                     })
                 }  
             )
-            .catch((e) => { console.log(e);}) // catch and log err
+            
+            // error catcher
+            .catch((e) => {
+                if (e.name !== "AbortError") {
+                    if (e.message === "404" || e.name === "TypeError") {
+                        window.location.href = "/not-found";
+                    }
+                    else if (e.message === "500") {
+                        window.location.href = "/server-error";
+                    }
+                    else if (e.message === "419") {
+                        window.location.href = "/page-expired";
+                    }
+                    // console.log(e.name);
+                } 
+            });
     }
 
     // abort if unmount

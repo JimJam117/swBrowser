@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, Redirect } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // needs a title and a ref (for the API)
 function List(props) {
@@ -17,9 +17,6 @@ function List(props) {
 
     const load = () => setLoading(true);
 
-
-    console.log(id);
-
     useEffect(() => {
         if (loading) {fetchItems()}
         return () => {
@@ -28,15 +25,41 @@ function List(props) {
     })
 
     const fetchItems = async (apiUrl = `https://swapi.co/api/${props.apiRef}?page=${id}`) =>  {
+        
         await fetch(apiUrl, {signal})
-        .then(async (fetchedData) => {
-            const data = await fetchedData.json();
-            setResults(data);
-            setList(data.results);
-            setLoading(false);
+            .then(async (response) => {
+
+                //throw errors if issues
+                if (response.status === 500) {
+                    throw new Error("500");
+                }
+                else if(response.status === 404) {
+                    throw new Error("404");
+                }
+                else if(response.status === 419) {
+                    throw new Error("419");
+                }
+
+                const data = await response.json();
+                setResults(data);
+                setList(data.results);
+                setLoading(false);
+
         })
+
+        //err catch
         .catch((e) => {
-            console.log(e);
+            if (e.name !== "AbortError") {
+                if (e.message === "404" || e.name === "TypeError") {
+                    window.location.href = "/not-found";
+                }
+                else if (e.message === "500") {
+                    window.location.href = "/server-error";
+                }
+                else if (e.message === "419") {
+                    window.location.href = "/page-expired";
+                }
+            } 
         });
     }
 

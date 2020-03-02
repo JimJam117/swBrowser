@@ -17,15 +17,15 @@ import {shipDetail} from './components/details/shipDetail';
 
 // functions used for rendering
 function CharacterList() {
- return(<List  title="Characters" linkName="character" apiRef="people" pageNumb={1}/>); 
+ return(<List  title="Characters" linkName="character" apiRef="people"/>); 
 }
 
 function PlanetList() {
-  return(<List  title="Planets" linkName="planet" apiRef="planets" pageNumb={1}/>); 
+  return(<List  title="Planets" linkName="planet" apiRef="planets"/>); 
  }
 
  function ShipList() {
-  return(<List  title="Ships" linkName="ship" apiRef="starships" pageNumb={1}/>); 
+  return(<List  title="Ships" linkName="ship" apiRef="starships"/>); 
  }
 
 // main function

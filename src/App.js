@@ -31,7 +31,7 @@ function PlanetList() {
 // main function
 function App() {
   return (
-    <Router>
+    <Router basename="/apps/sw-browser" >
       <div className="App">
         <Header />
         <Switch>

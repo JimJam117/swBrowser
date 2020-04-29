@@ -1,5 +1,5 @@
 # SWbrowser
-A react app for browsing Star Wars content provided by the **Star Wars API** (https://swapi.co/).
+A react app for browsing Star Wars content provided by the **Star Wars API** (~~https://swapi.co/~~ https://swapi.dev/).
 
 ## About the project
 This was the first react app I built that receives data from an API. I used the **Fetch API** to grab the information from swapi, which then takes the response and does some error checks (redirecting to the not found page if the response status code is a 404 for example) and then renders it. I used **functional components** with **react hooks** for the lists of characters, planets and ships, and for the “details” pages (pages that provide the details about whatever item you clicked on in the list) I used **class-based components**. This way I can get used to writing both, and see how similar things are done in each. I used **abortController** to abort the fetch request if the user goes to another page whilst the current page is still loading, to prevent issues with asynchronous promises. **React router** was used to route the pages of the app together.

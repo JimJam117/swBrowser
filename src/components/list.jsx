@@ -24,7 +24,7 @@ function List(props) {
         };
     })
 
-    const fetchItems = async (apiUrl = `https://swapi.co/api/${props.apiRef}?page=${id}`) =>  {
+    const fetchItems = async (apiUrl = `https://swapi.dev/api/${props.apiRef}?page=${id}`) =>  {
         
         await fetch(apiUrl, {signal})
             .then(async (response) => {

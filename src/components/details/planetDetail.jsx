@@ -18,7 +18,7 @@ export class planetDetail extends Component {
     componentDidMount() {
         const id = Number(this.props.match.params.id);
         fetch(
-                `https://swapi.co/api/planets/${id}`, 
+                `https://swapi.dev/api/planets/${id}`, 
                 {signal: this.signal} // abort signal
             )
 

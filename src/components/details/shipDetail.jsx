@@ -18,7 +18,7 @@ signal = this.controller.signal;
 componentDidMount() {
     const id = Number(this.props.match.params.id);
     fetch(
-            `https://swapi.co/api/starships/${id}`, 
+            `https://swapi.dev/api/starships/${id}`, 
             {signal: this.signal} // abort signal
         )
         

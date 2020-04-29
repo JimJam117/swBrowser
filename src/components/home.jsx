@@ -6,7 +6,7 @@ export class Home extends Component {
             <main>
                 <section className="home home-top">
                 <h1>SWbrowser</h1>
-                <p>SWbrowser is a simple react app to view data from the <a href="https://swapi.co/">Star Wars API</a>. You can browse the characters, planets and ships from the films, and click on them to get more details. </p>
+                <p>SWbrowser is a simple react app to view data from the <a href="https://swapi.dev/">Star Wars API</a>. You can browse the characters, planets and ships from the films, and click on them to get more details. </p>
                 </section>
 
                 <section className="home home-mid">

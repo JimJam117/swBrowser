@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 
 export class characterDetail extends Component {
     
@@ -6,7 +7,8 @@ export class characterDetail extends Component {
         super();
         this.state = {
             loading : true,
-            character : {}
+            character : {},
+            e : null
         }
     }
     
@@ -46,21 +48,14 @@ export class characterDetail extends Component {
                 }  
             )
 
-            // error catcher
-            .catch((e) => {
-                if (e.name !== "AbortError") {
-                    if (e.message === "404" || e.name === "TypeError") {
-                        window.location.href = "/not-found";
-                    }
-                    else if (e.message === "500") {
-                        window.location.href = "/server-error";
-                    }
-                    else if (e.message === "419") {
-                        window.location.href = "/page-expired";
-                    }
-                    // console.log(e.name);
-                } 
-            });
+        //err catch
+        .catch((e) => {
+            this.setState({
+                ...this.state,
+                e : e
+            })
+
+        });
         
         // catch and log err
     }
@@ -71,6 +66,22 @@ export class characterDetail extends Component {
     }
 
     render() {
+
+        // render error redirect if there is an error
+        if(this.state.e != null) {
+            if (this.state.e.name !== "AbortError") {
+                if (this.state.e.message === "404" || this.state.e.name === "TypeError") {
+                    return (<Redirect to="/not-found" />);
+                }
+                else if (this.state.e.message === "500") {
+                    return (<Redirect to="/server-error" />);
+                }
+                else if (this.state.e.message === "419") {
+                    return (<Redirect to="/page-expired" />);
+                }
+            }
+        }
+
         return (
             
                 this.state.loading ? <div className="loading">Loading</div> : 
